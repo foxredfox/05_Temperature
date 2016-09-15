@@ -107,7 +107,7 @@ namespace _05_Temperature
             Assert.AreEqual(100, (temp as Celcius).Convert(212));
             Assert.AreEqual(100, temp.Convert(212));
         }
-/*
+
         [TestMethod]
         public void FactoryMethodCovertsCorrectlyFromCelciusToFahrenheit()
         {
@@ -115,6 +115,6 @@ namespace _05_Temperature
             Assert.AreEqual(212, (temp as Fahrenheit).Convert(100));
             Assert.AreEqual(212, temp.Convert(100));
         }
-*/
+
     }
 }

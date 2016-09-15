@@ -11,7 +11,7 @@ namespace _05_Temperature
             Fahrenheit
     }
 
-    class Temperature : ITemperature
+    class Temperature
     {
         public double Fahrenheit = 0;
         public double Celcius    = 0;
@@ -48,19 +48,29 @@ namespace _05_Temperature
 
     }
 
-
-
     public class Celcius : ITemperature
     {
         public double Convert(double target)
         {
+            double result = (target - 32) * (5.0 / 9.0);
 
+            return Math.Round(result, 1);
+        }
+    }
+
+    public class Fahrenheit : ITemperature
+    {
+        public double Convert(double target)
+        {
+            double result = target * (9.0 / 5.0) + 32;
+
+            return Math.Round(result, 1);
         }
     }
 
     public interface ITemperature
     {
-
+        double Convert(double target);
     }
 
 
@@ -68,8 +78,13 @@ namespace _05_Temperature
     {
         public static ITemperature Get(Unit unitType)
         {
-            Celcius celcius = new Celcius();
-                return celcius;
+            switch(unitType){
+                case Unit.Celcius:
+                    return new Celcius();
+                case Unit.Fahrenheit:
+                default:
+                    return new Fahrenheit();
+            }
         }
     }
 }
